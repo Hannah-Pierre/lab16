@@ -1,3 +1,4 @@
+
 # Lab 16
 # 70pt -  Add in movement buttons for up, down, left and right using WASD
 # 80pt -  Make sure the player can't go out of bounds to the left, right or down.
@@ -30,6 +31,9 @@ class myApp(object):
         
         self.label1 = Label(root, text=self.prompt, width=len(self.prompt), bg='green')
         self.label1.pack()
+        if rocket1Fired == True :
+            self.rockets = self.rockets - 1
+        
 
         self.rockets = 3
         
@@ -56,10 +60,10 @@ class myApp(object):
         elif x1 < 0:
             direction = 5
         drawpad.move(enemy, direction, 0)
-        drawpad.after(5,self.animate)
+        
         if rocket1Fired == True :
-            drawpad.move(rocket1, 0, direction)
-            drawpad.after(5,self.animate)
+            drawpad.move(rocket1, 0, -5)
+        drawpad.after(5,self.animate)
  
  
     def key(self,event):
@@ -92,11 +96,6 @@ class myApp(object):
         if py2 > 600 :
             drawpad.move(player,0,-4)
             drawpad.move(rocket1,0,-4)
-        if event.char == " " :
-            rocket1Fired = True
-        if rocket1Fired == True :
-            drawpad.move(rocket1, 0, direction)
-            drawpad.after(5,self.key)
         if event.char == " " :
             rocket1Fired = True
 
