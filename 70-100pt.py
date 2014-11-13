@@ -73,6 +73,17 @@ class myApp(object):
         if event.char == "a":
             drawpad.move(player,-4,0)
             drawpad.move(rocket1,-4,0)
+        px1,py1,px2,py2 = drawpad.coords(player)
+        if px1 < 0 :
+            drawpad.move(player,4,0)
+            drawpad.move(rocket1,4,0)
+        if px2 > 800 :
+            drawpad.move(player,-4,0)
+            drawpad.move(rocket1,4,0)
+        if py2 > 600 :
+            drawpad.move(player,0,-4)
+            drawpad.move(rocket1,0,-4)
+             
             
             
                
